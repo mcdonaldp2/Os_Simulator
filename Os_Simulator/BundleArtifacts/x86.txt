@@ -1,0 +1,2 @@
+MainPackage=C:\Users\matthew.mcgee\Documents\os_simulator\Os_Simulator\Os_Simulator\bin\x86\Debug\Os_Simulator_1.0.0.0_x86_Debug.appx
+SymbolPackage=C:\Users\matthew.mcgee\Documents\os_simulator\Os_Simulator\Os_Simulator\AppPackages\Os_Simulator_1.0.0.0_Debug_Test\Os_Simulator_1.0.0.0_x86_Debug.appxsym

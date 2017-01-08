@@ -1,0 +1,273 @@
+﻿<Page
+    x:Class="Os_Simulator.GUI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Os_Simulator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Opacity="0.99" Width="1280" Height="720">
+
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="459*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="818*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel x:Name="gui_main_stack" VerticalAlignment="Bottom" Background="Black" Grid.ColumnSpan="5" BorderBrush="#FF1EBB14" BorderThickness="0" Height="522" Margin="14,0,774,129"/>
+
+
+        <Grid Margin="48,0,0,73" Grid.Column="4" Background="Black" BorderBrush="#FF26A70F" BorderThickness="1">
+            <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Foreground="#FFF6EFEF" Margin="345,5,298,614" Text="Simulator Log" FontFamily="Arial Black" FontSize="20"/>
+            <TextBlock x:Name="currentPCB" TextWrapping="Wrap" Text="" Margin="16,62,514,447" Foreground="#FFFBFBFB"/>
+            <TextBlock x:Name="cpuClockCycleLabel" Height="23" Margin="540,44,13,0" TextWrapping="Wrap" Text="CPU Clock Cycle: " VerticalAlignment="Top" Foreground="#FFF9F9F9" FontSize="18"/>
+            <Viewbox x:Name="gui_input_row" Margin="-509,608,397,10">
+                <Grid Height="31" Width="1270">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="107*"/>
+                        <ColumnDefinition Width="769*"/>
+                        <ColumnDefinition Width="394*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="C:\User\sim_os&gt;" Foreground="#FFF9EAEA" Margin="10,-4,636,-9" FontSize="25" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="gui_input" TextWrapping="Wrap" Text="" RenderTransformOrigin="0.502,1.078" Background="White" Foreground="Black" SelectionHighlightColor="#FF010101" BorderBrush="#FFE1DBDB" RequestedTheme="Dark" KeyUp="UiKeyUp" Margin="0,-1,156,0" Grid.Column="1" HorizontalAlignment="Right" Width="524"/>
+                </Grid>
+            </Viewbox>
+            <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="PCB In CPU" Margin="118,31,570,591" Foreground="#FFEEE7E7"/>
+            <Grid Margin="16,234,396,22">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="44*"/>
+                    <RowDefinition Height="102*"/>
+                    <RowDefinition Height="25*"/>
+                </Grid.RowDefinitions>
+                <ListView x:Name="inReadyQueueList" IsItemClickEnabled="False"  Margin="4,24,317,3" BorderBrush="White" Grid.RowSpan="3">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <Border BorderBrush="White" BorderThickness="1" Margin="-2,0,-13,0" Grid.RowSpan="3"/>
+                <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.202,-0.125" Height="24" Width="24" Text="pId" Foreground="White" FontSize="15" Margin="4,0,0,0"/>
+                <ListView x:Name="inReadyQueueCpuUsed" HorizontalAlignment="Left" Margin="121,24,0,0" Width="54" Foreground="#FFFBFBFB" Grid.RowSpan="3">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <TextBlock x:Name="textBlock6" TextAlignment="Center" HorizontalAlignment="Left" Margin="79,0,0,0" TextWrapping="Wrap" Text="io" VerticalAlignment="Top" Foreground="White" Width="22" Height="24" RenderTransformOrigin="-0.545,0.438"/>
+                <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="107,0,0,0" TextWrapping="Wrap" Text=" CCs Used" VerticalAlignment="Top" Foreground="#FFF3EDED" Width="68" Height="21" FontSize="15"/>
+                <Border BorderBrush="White" BorderThickness="1,0" HorizontalAlignment="Left" Height="19" Margin="178,1,0,0" VerticalAlignment="Top" Width="104"/>
+                <ListView x:Name="inReadyQueueSize" Margin="38,24,272,0" Foreground="#FFFBFBFB" Grid.RowSpan="3">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <Border BorderBrush="White" BorderThickness="1,0" HorizontalAlignment="Left" Height="20" Margin="28,1,0,0" VerticalAlignment="Top" Width="47"/>
+                <TextBlock x:Name="textBlock5_Copy" HorizontalAlignment="Left" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.202,-0.125" Height="24" Width="50" Text="Size" Foreground="White" FontSize="15" Margin="28,0,0,0"/>
+                <ListView x:Name="inReadyQueueIoRequests" HorizontalAlignment="Left" Margin="83,24,0,0" Width="33" Foreground="#FFFBFBFB" Grid.RowSpan="3">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <TextBlock x:Name="textBlock7_Copy" HorizontalAlignment="Left" Margin="197,-1,0,0" TextWrapping="Wrap" Text="Operation" VerticalAlignment="Top" Foreground="#FFF3EDED" Width="72" Height="21" FontSize="15"/>
+                <TextBlock x:Name="textBlock6_Copy" TextAlignment="Center" HorizontalAlignment="Left" Margin="287,0,-8,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Width="76" Height="20" RenderTransformOrigin="-0.545,0.438" Text="Cycles Left" FontSize="15"/>
+                <Border BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="-2,20,-12,0" VerticalAlignment="Top" Width="369"/>
+                <ListView x:Name="inReadyQueueOperation" Margin="197,25,68,0" Foreground="#FFFBFBFB" Grid.RowSpan="3">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <Border BorderBrush="White" BorderThickness="1,0,0,0" HorizontalAlignment="Left" Height="20" Margin="102,1,0,0" VerticalAlignment="Top" Width="47"/>
+                <ListView x:Name="inReadyQueueCyclesLeft" Margin="308,24,5,-4" Foreground="#FFFBFBFB" Grid.RowSpan="3">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </Grid>
+            <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="177,205,0,417" TextWrapping="Wrap" Foreground="White" FontSize="17" RenderTransformOrigin="1.2,0.435">
+                <Run Text="Ready"/>
+                <LineBreak/>
+            </TextBlock>
+            <Grid HorizontalAlignment="Left" Margin="586,234,0,23" Width="175">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="71*"/>
+                    <ColumnDefinition Width="104*"/>
+                </Grid.ColumnDefinitions>
+                <ListView x:Name="inIoQueueList" IsItemClickEnabled="False"  Margin="4,24,38,0" BorderBrush="White">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <Border BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Margin="-2,0,0,1" Width="170" Grid.ColumnSpan="2"/>
+                <Border BorderBrush="White" BorderThickness="1,0,0,0" HorizontalAlignment="Left" Height="19" Margin="3,1,0,0" VerticalAlignment="Top" Width="22" Grid.Column="1"/>
+                <Border BorderBrush="White" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Height="20" Margin="4,0,0,0" VerticalAlignment="Top" Width="27"/>
+                <TextBlock x:Name="textBlock12" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.202,-0.125" Height="24" Width="24" Text="pId" Foreground="White" FontSize="15" Margin="4,0,0,0"/>
+                <TextBlock x:Name="textBlock13" HorizontalAlignment="Left" Margin="23,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3EDED" Width="71" Height="21" FontSize="15" SelectionChanged="textBlock13_SelectionChanged" Grid.Column="1" Text="IO Type"/>
+                <Border BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="-2,20,0,0" VerticalAlignment="Top" Width="170" Grid.ColumnSpan="2"/>
+                <ListView x:Name="inIoQueueCycles" Margin="38,0,92,0" Foreground="#FFFBFBFB" Grid.ColumnSpan="2" Height="364" VerticalAlignment="Bottom">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <TextBlock x:Name="textBlock5_Copy2" HorizontalAlignment="Left" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.202,-0.125" Height="24" Width="50" Foreground="White" FontSize="15" Margin="28,0,0,0" Grid.ColumnSpan="2">
+                    <Run Text="Cycles"/>
+                    <LineBreak/>
+                    <Run/>
+                </TextBlock>
+                <ListView x:Name="inIoQueueIoType" HorizontalAlignment="Left" Margin="12,24,0,0" Width="82" Foreground="#FFFBFBFB" Grid.Column="1">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </Grid>
+            <TextBlock x:Name="textBlock4_Copy" HorizontalAlignment="Left" Margin="460,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Height="31" Text="Waiting" FontSize="17"/>
+            <TextBlock x:Name="textBlock4_Copy1" Margin="663,209,74,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Height="28" Text="I/O Queue" FontSize="17" RenderTransformOrigin="0.778,0.565"/>
+            <TextBlock x:Name="totalMemoryLabel" Height="24" Margin="300,79,290,0" TextWrapping="Wrap" Text="   Total Memory: " VerticalAlignment="Top" Foreground="#FFF9F9F9"/>
+            <TextBlock x:Name="allocatedMemoryLabel" Height="24" Margin="549,79,20,0" TextWrapping="Wrap" Text="Allocated Memory:" VerticalAlignment="Top" Foreground="#FFF9F9F9"/>
+            <Border BorderBrush="White" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Height="20" Margin="117,33,0,0" VerticalAlignment="Top" Width="78"/>
+            <Grid HorizontalAlignment="Left" Height="391" Margin="398,234,0,0" VerticalAlignment="Top" Width="170">
+                <ListView x:Name="inWaitingQueueCyclesLeft" Margin="118,24,6,0" Foreground="#FFFBFBFB" ScrollViewer.VerticalScrollMode="Disabled" SelectionMode="None">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <ListView x:Name="inWaitingQueueList" IsItemClickEnabled="False"  Margin="4,24,142,0" BorderBrush="White" ScrollViewer.VerticalScrollMode="Disabled" SelectionMode="None">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <Border BorderBrush="White" BorderThickness="1" Margin="-2,0,-8,0"/>
+                <Border BorderBrush="White" BorderThickness="1,0" HorizontalAlignment="Left" Height="19" Margin="74,1,0,0" VerticalAlignment="Top" Width="31"/>
+                <Border BorderBrush="White" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Height="20" Margin="4,0,0,0" VerticalAlignment="Top" Width="27"/>
+                <TextBlock x:Name="textBlock8" TextAlignment="Center" HorizontalAlignment="Left" Margin="80,0,0,0" TextWrapping="Wrap" Text="io" VerticalAlignment="Top" Foreground="White" Width="22" Height="24" RenderTransformOrigin="-0.545,0.438"/>
+                <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.202,-0.125" Height="24" Width="24" Text="pId" Foreground="White" FontSize="15" Margin="4,0,0,0"/>
+                <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Margin="108,0,-8,0" TextWrapping="Wrap" Text=" CCs Left" VerticalAlignment="Top" Foreground="#FFF3EDED" Width="70" Height="21" FontSize="15"/>
+                <Border BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="-2,20,-8,0" VerticalAlignment="Top" Width="180"/>
+                <ListView x:Name="inWaitingQueueSize" Margin="36,24,87,0" Foreground="#FFFBFBFB" ScrollViewer.VerticalScrollMode="Disabled" SelectionMode="None">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <TextBlock x:Name="textBlock5_Copy1" HorizontalAlignment="Left" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.202,-0.125" Height="24" Width="50" Text="Size" Foreground="White" FontSize="15" Margin="28,0,0,0"/>
+                <ListView x:Name="inWaitingQueueIoRequests" Margin="83,24,63,0" Foreground="#FFFBFBFB">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="MinHeight" Value="20" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </Grid>
+            <TextBlock x:Name="numberOfProcessesInMemory" Height="24" Margin="548,104,25,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF9F9F9">
+                <Run Text=" # Jobs in Memory:"/>
+                <LineBreak/>
+                <Run/>
+            </TextBlock>
+            <TextBlock x:Name="avgWaitTime" Height="24" Margin="489,135,23,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF9F9F9" Text="Avg. Wait of Completed Jobs:"/>
+            <TextBlock x:Name="jobsCompleted" Height="24" Margin="304,134,292,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF9F9F9">
+                <Run Text="Jobs Completed:"/>
+                <LineBreak/>
+                <Run/>
+            </TextBlock>
+            <TextBlock x:Name="totalJobs" Height="24" Margin="339,104,289,0" TextWrapping="Wrap" Text="Total jobs:" VerticalAlignment="Top" Foreground="#FFF9F9F9"/>
+            <Border BorderBrush="White" BorderThickness="0,1" HorizontalAlignment="Left" Height="28" Margin="294,102,0,0" VerticalAlignment="Top" Width="461"/>
+            <Border BorderBrush="White" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Height="81" Margin="387,78,0,0" VerticalAlignment="Top" Width="95"/>
+            <TextBlock x:Name="textBlock4_Copy2" Margin="355,184,353,440" TextWrapping="Wrap" Foreground="White" FontSize="17">
+                <Run Text="Queues"/>
+                <LineBreak/>
+                <Run Text="ss"/>
+            </TextBlock>
+            <Border BorderBrush="White" BorderThickness="0,0,0,1" Height="17" Margin="353,190,353,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Border BorderBrush="White" BorderThickness="0,0,0,1" Grid.Column="4" HorizontalAlignment="Left" Height="30" Margin="389,0,0,0" VerticalAlignment="Top" Width="130"/>
+        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Foreground="White" Margin="10,0,560,656" Grid.ColumnSpan="5" SelectionHighlightColor="Black">
+                <LineBreak/>
+                <Run Text="Matt and Paul OS Simulator [Version 1.0.0]"/>
+                <LineBreak/>
+                <Run Text="2016 VCU"/>
+                <LineBreak/>
+                <Run/>
+        </TextBlock>
+        <Border BorderBrush="White" BorderThickness="0,0,0,1" Height="42" Margin="10,19,86,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="#FF26A70F" BorderThickness="1" HorizontalAlignment="Left" Height="647" VerticalAlignment="Top" Width="506" Grid.ColumnSpan="5"/>
+        <Border BorderBrush="#FFF9F6F6" BorderThickness="1" Grid.Column="4" Height="83" Margin="341,78,15,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>

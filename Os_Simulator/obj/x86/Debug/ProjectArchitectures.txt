@@ -1,0 +1,1 @@
+C:\Users\Paul0302\Documents\os_simulator\Os_Simulator\Os_Simulator\Os_Simulator.csproj;x86

@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="Os_Simulator.Graph"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Os_Simulator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}">
+        <Charting:Chart x:Name="MemoryChart" Title="Memory Usage Chart" Margin="22,22,656,408">
+            <Charting:BarSeries Margin="0" Title="Kb" IndependentValuePath="Item1" DependentValuePath="Item2" IsSelectionEnabled="True" />
+        </Charting:Chart>
+        <Charting:Chart Name="AverageJobChart" Margin="648,22,38,408" Title="Average Wait Time of Completed Jobs v. Total Completed Cycles">
+            <Charting:LineSeries Margin="0"
+                                 IndependentValuePath="Item1" 
+                                 DependentValuePath="Item2">
+                
+            </Charting:LineSeries>
+        </Charting:Chart>
+
+    </Grid>
+</Page>

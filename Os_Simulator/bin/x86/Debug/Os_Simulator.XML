@@ -1,0 +1,884 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Os_Simulator</name>
+    </assembly>
+    <members>
+        <member name="T:Os_Simulator.App">
+            <summary>
+            Provides application-specific behavior to supplement the default Application class.
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.App.#ctor">
+            <summary>
+            Initializes the singleton application object.  This is the first line of authored code
+            executed, and as such is the logical equivalent of main() or WinMain().
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.App.OnLaunched(Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)">
+            <summary>
+            Invoked when the application is launched normally by the end user.  Other entry points
+            will be used such as when the application is launched to open a specific file.
+            </summary>
+            <param name="e">Details about the launch request and process.</param>
+        </member>
+        <member name="M:Os_Simulator.App.OnNavigationFailed(System.Object,Windows.UI.Xaml.Navigation.NavigationFailedEventArgs)">
+            <summary>
+            Invoked when Navigation to a certain page fails
+            </summary>
+            <param name="sender">The Frame which failed navigation</param>
+            <param name="e">Details about the navigation failure</param>
+        </member>
+        <member name="M:Os_Simulator.App.OnSuspending(System.Object,Windows.ApplicationModel.SuspendingEventArgs)">
+            <summary>
+            Invoked when application execution is being suspended.  Application state is saved
+            without knowing whether the application will be terminated or resumed with the contents
+            of memory still intact.
+            </summary>
+            <param name="sender">The source of the suspend request.</param>
+            <param name="e">Details about the suspend request.</param>
+        </member>
+        <member name="M:Os_Simulator.App.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.App.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.App.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.App.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+        <member name="T:Os_Simulator.Components.EventControlBlock">
+            <summary>
+            Represents an event in the os
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.EventControlBlock.Id">
+            <summary>
+            The ecbs unique id
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.EventControlBlock.Type">
+            <summary>
+            The type of event the ecb represents
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.EventControlBlock.IoType">
+            <summary>
+            Represents type of io for event. Only used when Type = IO
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.EventControlBlock.PcbId">
+            <summary>
+            The id of the pcb related to the event
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.EventControlBlock.ClockCycle">
+            <summary>
+            The clock cycle that event should be fired on
+            </summary>
+        </member>
+        <member name="T:Os_Simulator.Components.Settings">
+            <summary>
+            Settings for the os
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.Settings.ToString">
+            <summary>
+            Stats to display on the ui
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.Settings.GetDecIo">
+            <summary>
+            Gets the value of the decIO setting
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.Settings.getScheduling">
+            <summary>
+            Gets the scheduling algorithm name as a string
+            </summary>
+            <returns>name of the currently set scheduling algorithm</returns>
+        </member>
+        <member name="M:Os_Simulator.Components.Settings.GetSpeedConversion">
+            <summary>
+            Normalizes speed to a value between 1 and 10
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Os_Simulator.Components.FileLoader">
+            <summary>
+            Loads programs, creates pcbs and assigns them unique ids
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.FileLoader.convertLineToOperation(System.String)">
+            <summary>
+            Parses the command and any params from a single line of input and calls the corresponding function
+            </summary>
+            <param name="line"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.FileLoader.getRandomIO">
+            <summary>
+            Get a random io type. Used when no io type is passed with an io operation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.FileLoader.LoadFile(System.String)">
+            <summary>
+            Load the program in and assign it to whichever queue is appropriate
+            </summary>
+            <param name="filename">Name of the file(program) to load</param>
+            <returns></returns>
+        </member>
+        <member name="T:Os_Simulator.Components.Clock">
+            <summary>
+            Simulates the clock in an operating system
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.Clock.#ctor">
+            <summary>
+            Init the clock starting at 0
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.Clock.Execute">
+            <summary>
+            Advances clock cycle by 1
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.Clock.GetClock">
+            <summary>
+            Gets the current clock cycle
+            </summary>
+            <returns>Current clock cycl</returns>
+        </member>
+        <member name="M:Os_Simulator.Components.Clock.Reset">
+            <summary>
+            Resets the Clock to 0
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.Clock.SetClock(System.Int32)">
+            <summary>
+            Sets the clock to a particular clock cycle
+            </summary>
+            <param name="num"></param>
+        </member>
+        <member name="T:Os_Simulator.Components.CommandInterface">
+            <summary>
+            Simulates the command interface in the os. Commands are passed from the gui to the ci for execution
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.CommandInterface.#ctor(Os_Simulator.Components.OperatingSystem)">
+            <summary>
+            Initializes the command interface.
+            </summary>
+            <param name="os">A parent os must be given so that the ci has access to any component of the os it needs.</param>
+        </member>
+        <member name="M:Os_Simulator.Components.CommandInterface.Exe(System.String[])">
+            <summary>
+            Lets the simulation run on its own. The user can also specify the
+            number of cycles to run before pausing.If there are no processes in the
+            ready queue that are waiting to be scheduled, EXE will return to the command interface.
+            </summary>
+            <param name="userCommand">Command passed from the gui</param>
+        </member>
+        <member name="M:Os_Simulator.Components.CommandInterface.Help(System.String)">
+            <summary>
+            Simulates the help function on a microsoft cmd line. Allows the user to see more detailed infor about commands, functions, etc...
+            </summary>
+            <param name="input">The users input from the command line</param>
+        </member>
+        <member name="M:Os_Simulator.Components.CommandInterface.Load(System.String[])">
+            <summary>
+            Takes a program file name and creates a ProcessControlBlock from the program file
+            </summary>
+            <param name="user_command"> user command entered into the command line</param>
+            <returns>
+            A ProcessControlBlock created from the program file if a program file is found/
+            If a program file is not found then returns null;
+            </returns>
+        </member>
+        <member name="M:Os_Simulator.Components.CommandInterface.Mem">
+            <summary>
+            Shows the current usage of memory space.
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.CommandInterface.Proc">
+            <summary>
+            Shows all unfinished processes in the system and their
+            information.  The process information should include: current process
+            state, amount of CPU time needed to complete, amount of CPU time
+            already used, priority (if relevant), number of I/O requests performed.
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.CommandInterface.Reset">
+            <summary>
+            Clears all queues and reset clock cycles. Does not change any settings
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.CommandInterface.Settings(System.String)">
+            <summary>
+            Allows the user to change some basic settings in the simulation
+            </summary>
+            <param name="input">Command line input</param>
+        </member>
+        <member name="T:Os_Simulator.Components.CPU">
+            <summary>
+            Simulates a single cpu in an operating system
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.CPU.Clock">
+            <summary>
+            Represents the Os's clock
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.CPU.CurrentPcb">
+            <summary>
+            Represents the pcb currently in cpu being executed
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.CPU.#ctor(Os_Simulator.Components.OperatingSystem)">
+            <summary>
+            Init the CPU
+            </summary>
+            <param name="os">All components must be given the parent OS so it has access to everything</param>
+        </member>
+        <member name="M:Os_Simulator.Components.CPU.AdvanceClock">
+            <summary>
+            Advances the CPU 1 clock cycle. The cpu will execute the current process in the current pcb and 
+            take whatever action is neccessary
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.CPU.ExecuteOperation">
+            <summary>
+            Executes current operation in the current pcb
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.CPU.Reset">
+            <summary>
+            Resets the cpu
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.CPU.SetClock(System.Int32)">
+            <summary>
+            Manually set the clock to a new cycle
+            </summary>
+            <param name="cycle"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.CPU.DetectInterrupt">
+            <summary>
+            Detect Interrupts
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.CPU.DetectPreemption">
+            <summary>
+            Detect Preemption
+            </summary>
+        </member>
+        <member name="T:Os_Simulator.Components.EventQueue">
+            <summary>
+            Queue used to handle events in the os
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.EventQueue.ecbs">
+            <summary>
+            The actual list the queue is built on. Due to the fact that this queues functionality must be changed when 
+            scheduling algorithms are changed, this must be made public so scheduler can access it
+            </summary>
+        </member>
+        <member name="P:Os_Simulator.Components.EventQueue.Size">
+            <summary>
+            Number of Ecbs in the queue
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.EventQueue.DeQueue">
+            <summary>
+            Removes and returns the top object in the queue
+            </summary>
+            <returns>Top ecb in queue</returns>
+        </member>
+        <member name="M:Os_Simulator.Components.EventQueue.EnQueue(Os_Simulator.Components.EventControlBlock)">
+            <summary>
+            Add an ecb to the queue
+            </summary>
+            <param name="ecb"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.EventQueue.GetCurrentQueueAsList">
+            <summary>
+            Get the current queue as a List object
+            </summary>
+            <returns>List of ecbs in the queue</returns>
+        </member>
+        <member name="M:Os_Simulator.Components.EventQueue.IsEmpty">
+            <summary>
+            Checks if the queue contains any items
+            </summary>
+            <returns>True if empty, false if not</returns>
+        </member>
+        <member name="M:Os_Simulator.Components.EventQueue.Peek">
+            <summary>
+            Get the top ecb on the queue without removing it
+            </summary>
+            <returns>The top ecb on the queue</returns>
+        </member>
+        <member name="M:Os_Simulator.Components.EventQueue.Reset">
+            <summary>
+            Resets and clears the queue
+            </summary>
+        </member>
+        <member name="T:Os_Simulator.Components.ExecutionQueue">
+            <summary>
+            Simulates exection queue in the os. Used for ready and waiting queue
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.ExecutionQueue.Pcbs">
+            <summary>
+            List data for the queue
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.ExecutionQueue.IsShortestJobFirst">
+            <summary>
+            If true, queue will change to priority queue based on total cycles
+            </summary>
+        </member>
+        <member name="P:Os_Simulator.Components.ExecutionQueue.Size">
+            <summary>
+            The number of pcbs in the queue
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.ExecutionQueue.DeQueue">
+            <summary>
+            Remove and return the pcb on the top of the queue
+            </summary>
+            <returns>Pcb next in line</returns>
+        </member>
+        <member name="M:Os_Simulator.Components.ExecutionQueue.EnQueue(Os_Simulator.Components.ProcessControlBlock)">
+            <summary>
+            Add a pcb to the queue. The order will depend on which scheduling algorithm is selected
+            </summary>
+            <param name="pcb">Pcb to be inserted</param>
+        </member>
+        <member name="M:Os_Simulator.Components.ExecutionQueue.GetCurrentQueueAsList">
+            <summary>
+            Return the queue as a list object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.ExecutionQueue.IncrementWaitTimes">
+            <summary>
+            Increments all wait times for pcbs in the system excluding the one in the cpu
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.ExecutionQueue.IsEmpty">
+            <summary>
+            Checks if the queue is empty
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.ExecutionQueue.Peek">
+            <summary>
+            Return the pcb on the top of the queue. Pcb will not be removed from queue
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.ExecutionQueue.Reset">
+            <summary>
+            Clears and resets this queue
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.ExecutionQueue.SimIoAll">
+            <summary>
+            Decrements timer on every stack (type of io) in the io scheduler
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.ExecutionQueue.SimIoTop">
+            <summary>
+            Decrements timer for the last incoming io only
+            </summary>
+        </member>
+        <member name="P:Os_Simulator.Components.ExecutionQueue.TotalMemory">
+            <summary>
+            The memory of all pcbs in the queue
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.InterruptProcessor.EventQueue">
+            <summary>
+            Queue to hold events
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.InterruptProcessor.#ctor(Os_Simulator.Components.OperatingSystem)">
+            <summary>
+            Init component with its parent os
+            </summary>
+            <param name="os">Parent os</param>
+        </member>
+        <member name="M:Os_Simulator.Components.InterruptProcessor.AddEvent(Os_Simulator.Components.EventControlBlock)">
+            <summary>
+            Add an event to the queue
+            </summary>
+            <param name="ecb">Ecb to add</param>
+        </member>
+        <member name="M:Os_Simulator.Components.InterruptProcessor.CreateAndAddEvent(Os_Simulator.Enums.EventType)">
+            <summary>
+            Creates a new event and adds it to the event queue
+            </summary>
+            <param name="eType">Type of event to create</param>
+        </member>
+        <member name="M:Os_Simulator.Components.InterruptProcessor.EmptyQueue">
+            <summary>
+            Clear out the queue
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.InterruptProcessor.GetEvent">
+            <summary>
+            Get the next event on the queue
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Os_Simulator.Components.InterruptProcessor.HasInterrupt">
+            <summary>
+            Returns true if there are events in the queue
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.InterruptProcessor.Reset">
+            <summary>
+            Clear the dictionary out and reset the component
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.InterruptProcessor.SignalInterrupt">
+            <summary>
+            Checks if there are any events waiting to be executed
+            </summary>
+            <returns>True if not empty</returns>
+        </member>
+        <member name="T:Os_Simulator.Components.IoBurst">
+            <summary>
+            Simulates a random io burst for io operations
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.IoBurst.GenerateIoBurst">
+            <summary>
+            Returns random number to simulate io burst
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Os_Simulator.Components.IoScheduler">
+            <summary>
+            Simulates an Io scheduler in an os
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.#ctor(Os_Simulator.Components.OperatingSystem)">
+            <summary>
+            Inits the component with access to the parent os
+            </summary>
+            <param name="os">Parent os</param>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.GetAllPcBs">
+            <summary>
+            Get all pcbs in the scheduler
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.GetList">
+            <summary>
+            Get all pcbs in the scheduler in a flat list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.GetPcb(System.Int32)">
+            <summary>
+            Get an individual pcb from the scheduler by id
+            </summary>
+            <param name="id">Id of the pcb</param>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.HasIo">
+            <summary>
+            Checks if the scheduler has any pcbs waiting on io
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.IncrementWaitTimes">
+            <summary>
+            Increment the wait times of all pcbs in the scheduler
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.IsInIoScheduler(Os_Simulator.Components.ProcessControlBlock)">
+            <summary>
+            Checks if an individual pc is in the scheduler
+            </summary>
+            <param name="pcb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.RemoveFromIoScheduler(Os_Simulator.Components.ProcessControlBlock)">
+            <summary>
+            Removes a pcb from the scheduler
+            </summary>
+            <param name="pcb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.Reset">
+            <summary>
+            Clear the io dictionary and reset the component
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.ScheduleIo(System.String,Os_Simulator.Components.ProcessControlBlock)">
+            <summary>
+            Adds pcb to the appropriate device queue. If a queue doesnt exist for it create one.
+            </summary>
+            <param name="ioDevice"></param>
+            <param name="pcb"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.Size">
+            <summary>
+            Gets the number of pcbs in the scheduler
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.IoScheduler.StartIo">
+            <summary>
+            Increment io cycles of pcbs in scheduler
+            </summary>
+        </member>
+        <member name="P:Os_Simulator.Components.IoScheduler.TotalMemory">
+            <summary>
+            Gets the total memory of all pcbs in the scheduler
+            </summary>
+        </member>
+        <member name="T:Os_Simulator.Components.MemoryManagement">
+            <summary>
+            Simulates memory management in an os
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.MemoryManagement.#ctor(Os_Simulator.Components.OperatingSystem)">
+            <summary>
+            Init the component with access to the os
+            </summary>
+            <param name="os">Parent os</param>
+        </member>
+        <member name="M:Os_Simulator.Components.MemoryManagement.AssignMemory(System.Int32)">
+            <summary>
+            Simulates assigning memory in the os. Should never be more than the max
+            </summary>
+            <param name="mem">Amount of memory to simulate</param>
+        </member>
+        <member name="M:Os_Simulator.Components.MemoryManagement.CanAllocate(System.Int32)">
+            <summary>
+            Checks if the amount of memory given could be added to the os
+            </summary>
+            <param name="amount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.MemoryManagement.FreeMemory(System.Int32)">
+            <summary>
+            Simulates releasing memory in the os
+            </summary>
+            <param name="amount">Amount to release</param>
+        </member>
+        <member name="M:Os_Simulator.Components.MemoryManagement.GetCurrentMemoryUsage">
+            <summary>
+            Get the amount of memory being used
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.MemoryManagement.Reset">
+            <summary>
+            Resets the memory to 0
+            </summary>
+        </member>
+        <member name="T:Os_Simulator.Components.OperatingSystem">
+            <summary>
+            Simulates an operating system
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.OperatingSystem.Cpu">
+            <summary>
+            Components used by os
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.OperatingSystem.#ctor(Os_Simulator.GUI)">
+            <summary>
+            Init the os and make the gui a child of the os
+            </summary>
+            <param name="gui"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.OperatingSystem.Advance(System.Int32)">
+            <summary>
+            Advances the os, checks for events and updates ui
+            </summary>
+            <param name="cycles"></param>
+        </member>
+        <member name="P:Os_Simulator.Components.OperatingSystem.AllocatedMemory">
+            <summary>
+            Gets the total memory allocated in the os
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.OperatingSystem.CreateNeededEvents">
+            <summary>
+            Creates any events if needed by the os
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.OperatingSystem.GetAvgWaitTimes">
+            <summary>
+            Get the average wait time of pcbs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.OperatingSystem.HandleEvent(Os_Simulator.Components.EventControlBlock)">
+            <summary>
+            Handles events and makes takes the corresponding actions
+            </summary>
+            <param name="ecb"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.OperatingSystem.IncrementWaitTimes">
+            <summary>
+            Increments all pcbs wait time param except the pcb currently in the cpu
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.OperatingSystem.Reset">
+            <summary>
+            Clears everything from os and resets
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.OperatingSystem.UpdateQueues(Os_Simulator.Components.ProcessControlBlock)">
+            <summary>
+            Decides which queue a pcb goes in in shortest job first mode
+            </summary>
+            <param name="pcb"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Os_Simulator.Components.Operation">
+            <summary>
+            Simulates an operation in a process
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.Operation.Type">
+            <summary>
+            Type of operation
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.Operation.Cycles">
+            <summary>
+            Cycles remaining on operation
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.Operation.IsIo">
+            <summary>
+            Determines if the operation is an io operation
+            </summary>
+        </member>
+        <member name="F:Os_Simulator.Components.Operation.IoType">
+            <summary>
+            If isIo is set to true an io type must be given
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.Operation.#ctor(Os_Simulator.Enums.OperationType)">
+            <summary>
+            Init an operation with its type
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.Operation.#ctor(Os_Simulator.Enums.OperationType,System.Int32)">
+            <summary>
+            Init an operation with type and cycles
+            </summary>
+            <param name="type"></param>
+            <param name="cycles"></param>
+        </member>
+        <member name="T:Os_Simulator.Components.ProcessControlBlock">
+            <summary>
+            Simulate a block of code that contains all properies of a process
+            </summary>
+        </member>
+        <member name="P:Os_Simulator.Components.ProcessControlBlock.CurrentOperation">
+            <summary>
+            Represents the pcb currently being executed
+            </summary>
+        </member>
+        <member name="P:Os_Simulator.Components.ProcessControlBlock.TotalCyclesNeeded">
+            <summary>
+            Rough guess of how many ccs the pcb will take
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.ProcessControlBlock.#ctor(Os_Simulator.Enums.State,System.Int32,System.Collections.Generic.List{Os_Simulator.Components.Operation})">
+            <summary>
+            Create a new pcb
+            </summary>
+            <param name="state"></param>
+            <param name="memoryRequirement"></param>
+            <param name="processOperations"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.ProcessControlBlock.DecrementOperationClock">
+            <summary>
+            Decrements the remaining clock cycles for the current operation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.ProcessControlBlock.SetNextCommand">
+            <summary>
+            Gets the next event in the operation list and assignes it as current operation
+            </summary>
+            <returns>True: successfully added, False: no operations left to add</returns>
+        </member>
+        <member name="M:Os_Simulator.Components.ProcessControlBlock.ToString">
+            <summary>
+            Represents the pcb on the gui
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.ProcessControlBlock.ToStringForProc">
+            <summary>
+            Message for the proc command
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.Scheduler.#ctor(Os_Simulator.Components.OperatingSystem)">
+            <summary>
+            Init the component giving it permissions to the os
+            </summary>
+            <param name="os"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.Scheduler.AddNewPCB(Os_Simulator.Components.ProcessControlBlock)">
+            <summary>
+            Add a new pcb to the os. Scheduler decides where to put it based on the currernt scheduling algorithm
+            </summary>
+            <param name="pcb"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.Scheduler.AddPcbRoundRobin(Os_Simulator.Components.ProcessControlBlock)">
+            <summary>
+            Adds a pcb to the system when using round robin scheduling
+            </summary>
+            <param name="pcb"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.Scheduler.AddPcbShortestJobFirst(Os_Simulator.Components.ProcessControlBlock)">
+            <summary>
+            Adds a pcb to the system when using sjf scheduling
+            </summary>
+            <param name="pcb"></param>
+        </member>
+        <member name="M:Os_Simulator.Components.Scheduler.ContextSwitch">
+            <summary>
+            Simulates a context switch in which the scheduler preempts a process and adds the next
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.Scheduler.GetCurrentMemoryUsage">
+            <summary>
+            Gets the total memory in the scheduler
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Os_Simulator.Components.Scheduler.IncrementQuantumCounter">
+            <summary>
+            Increment the quantum. Creates event if context switch is needed
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.Scheduler.Reset">
+            <summary>
+            Clear the queues and reset the scheduler
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Components.Scheduler.UpdateReadyQueue">
+            <summary>
+            Simulates the long term scheduler moving items from waiting queue to ready queue
+            </summary>
+            <returns>True if something was added to ready queue and false if not</returns>
+        </member>
+        <member name="T:Os_Simulator.Graph">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Graph.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.Graph.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="T:Os_Simulator.GUI">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.GUI.#ctor">
+            <summary>
+            Init the component
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.GUI.Exit">
+            <summary>
+            Exit the simulation
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.GUI.HandleLoad(System.String)">
+            <summary>
+            Handles the load command
+            </summary>
+            <param name="user_input"></param>
+        </member>
+        <member name="M:Os_Simulator.GUI.LogClockCycle(System.Int32)">
+            <summary>
+            Updates cc on ui
+            </summary>
+            <param name="cycle"></param>
+        </member>
+        <member name="M:Os_Simulator.GUI.LogEntryToConsole">
+            <summary>
+            Log last command on the ui
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.GUI.LogMessageToConsole(System.String)">
+            <summary>
+            Log a given message to the ui
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Os_Simulator.GUI.ParseInput(System.String)">
+            <summary>
+            Parse the input string
+            </summary>
+            <param name="user_input"></param>
+        </member>
+        <member name="M:Os_Simulator.GUI.Reset">
+            <summary>
+            Resets the ui by zeroing all data and clearing all field
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.GUI.UiKeyUp(System.Object,Windows.UI.Xaml.Input.KeyRoutedEventArgs)">
+            <summary>
+            Detects actions on key. Used for keyboard shortcuts
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Os_Simulator.GUI.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:Os_Simulator.GUI.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="T:Os_Simulator.Program">
+            <summary>
+            Program class
+            </summary>
+        </member>
+    </members>
+</doc>
