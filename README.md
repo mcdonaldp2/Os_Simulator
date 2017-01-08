@@ -4,8 +4,8 @@ An operating system simulator built on top of the Universal Windows Platform (UW
 
 # Screenshots #
 
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
-![simulator_screenshot.PNG](https://bitbucket.org/repo/5bqXoo/images/3781222423-simulator_screenshot.PNG)
+![](/relative/path/to/img.jpg?raw=true "Optional Title")
+![simulator_screenshot.PNG](/Os_simulator/simulator_screenshot.png)
 
 ![simulator_graph_open.PNG](https://bitbucket.org/repo/5bqXoo/images/1821975699-simulator_graph_open.PNG)
 
